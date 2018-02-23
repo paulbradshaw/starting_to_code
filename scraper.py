@@ -12,7 +12,10 @@ html = scraperwiki.scrape("http://foo.com")
 root = lxml.html.fromstring(html)
 print html
 print root
-print root.cssselect("a")
+links = root.cssselect("a")
+for link in links:
+  linktext = link.text_content()
+  print linktext
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
